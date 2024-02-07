@@ -1,9 +1,17 @@
+"""
+Created on Tue Feb 6, 2024
+@author: tixianw2
+"""
+import sys
+sys.path.append("../../") 
 import numpy as np
 from tqdm import tqdm
 from elastica import *
-from set_arm_environment import ArmEnvironment
+# from set_arm_environment import ArmEnvironment
+from sensory_feedback_control.sensoryfeedback import SensoryFeedback
 from set_environment import Environment
-from sensoryfeedback import SensoryFeedback
+
+folder = '../'
 
 def data_save(env, controller):
 	model = {
@@ -47,7 +55,7 @@ def data_save(env, controller):
 		'muscle': muscle,
 		'sensor': sensor,
 		}
-	np.save('Data/test.npy', data)
+	np.save(folder+'Data/test2.npy', data)
 
 def get_activation(systems, time, controller=None, target=None):
 	if controller==None:
@@ -59,8 +67,8 @@ def get_activation(systems, time, controller=None, target=None):
 
 def main(filename):
 	## Create arm and simulation environment
-	final_time = 2. # 1.5 # 1.001
-	flag_shooting = 1
+	final_time = 2.0 # 1.5 # 1.001
+	flag_shooting = 0
 	flag_target = True # False # 
 	flag_obstacle = False # True # 
 	flags = [flag_shooting, flag_target, flag_obstacle]

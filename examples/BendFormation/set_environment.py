@@ -1,7 +1,11 @@
-import numpy as np
-from elastica import *
+"""
+Created on Tue Feb 6, 2024
+@author: tixianw2
+"""
+# import numpy as np
+# from elastica import *
 from set_arm_environment import *
-from tools import target_traj
+# from sensory_feedback_control.utils import target_traj
 
 # Add call backs
 class CallBack(CallBackBaseClass):

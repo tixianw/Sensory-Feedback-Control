@@ -1,8 +1,12 @@
+"""
+Created on Tue Feb 6, 2024
+@author: tixianw2
+"""
 import numpy as np
 from numba import njit
 from elastica._linalg import _batch_matvec, _batch_cross
 from elastica._calculus import quadrature_kernel, difference_kernel
-from tools import _diff, _aver, _diff_kernel, _aver_kernel
+from sensory_feedback_control.utils import _diff, _aver, _diff_kernel, _aver_kernel
 
 # @njit(cache=True)
 # def _passive_force(internal_forces, max_force, sigma):
