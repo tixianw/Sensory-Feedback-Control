@@ -1,21 +1,10 @@
-"""
-Created on Tue Feb 6, 2024
-@author: tixianw2
-"""
-# import sys
-# sys.path.append("../../") 
-# sys.path.append("../") 
 import numpy as np
 from elastica import *
 from elastica.timestepper import extend_stepper_interface
 from elastica._calculus import _isnan_check
-from sensory_feedback_control.actuation_muscles import ContinuousActuation
-from sensory_feedback_control.utils import (
-	_lab_to_material, 
-	_material_to_lab, 
-	_aver, 
-	_aver_kernel
-)
+from actuation_muscles import *
+from tools import _lab_to_material, _material_to_lab, _aver, _aver_kernel
+
 class BaseSimulator(BaseSystemCollection, Constraints, Connections, Forcing, CallBacks, Damping):
 	pass
 
@@ -221,7 +210,7 @@ class ArmEnvironment:
 			base_radius,
 			density,
 			0.0, # dissipation,
-			youngs_modulus=E,
+			E,
 			# nu_for_torques=nu_torque,
 			shear_modulus=shear_modulus,
 			position=init_pos,
@@ -304,10 +293,8 @@ class ArmEnvironment:
 	def callback(self):
 		self.pp_list = defaultdict(list)
 		self.simulator.collect_diagnostics(self.shearable_rod).using(
-			CallBack, 
-			step_skip=self.step_skip, 
-			callback_params=self.pp_list, 
-			total_steps=self.total_steps,
+			CallBack, step_skip=self.step_skip, 
+			callback_params=self.pp_list, total_steps=self.total_steps,
 		)
 	
 	def reset(self):

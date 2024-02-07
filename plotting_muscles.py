@@ -1,36 +1,29 @@
-"""
-Created on Tue Feb 6, 2024
-@author: tixianw2
-"""
-import sys
-sys.path.append("../") 
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 import matplotlib.animation as manimation
-# from matplotlib.collections import LineCollection
-# from mpl_toolkits.mplot3d import Axes3D
-# from matplotlib import gridspec 
+from matplotlib.collections import LineCollection
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import gridspec 
 import numpy as np
-# from numpy.linalg import norm
-# from scipy.signal import butter, filtfilt
+from numpy.linalg import norm
+from scipy.signal import butter, filtfilt
 np.seterr(divide='ignore', invalid='ignore')
-# from tools import _diff, _aver, _diff_kernel, _aver_kernel
-# import matplotlib.colors as mcolors
-# import matplotlib as mpl
-# from matplotlib.ticker import (MultipleLocator, 
-                            #    FormatStrFormatter, 
-                            #    AutoMinorLocator)
-import os
+from tools import _diff, _aver, _diff_kernel, _aver_kernel
+import matplotlib.colors as mcolors
+import matplotlib as mpl
+from matplotlib.ticker import (MultipleLocator, 
+                               FormatStrFormatter, 
+                               AutoMinorLocator)
 
 def isninf(a):
     return np.all(np.isfinite(a))
 
-folder = '../' # 'examples/'
-folder_name = folder+'Data/'
-choice = 1
+choice = 0
+folder_name = 'Data/'
 if choice==0:
-    file_name = 'bend_form'
+    file_name = 'test'
 elif choice==1:
-    file_name = 'bend_prop'
+    file_name = None
 
 data = np.load(folder_name + file_name + '.npy', allow_pickle='TRUE').item()
 
@@ -83,7 +76,7 @@ I = A**2 / (4*np.pi)
 EA = E * A
 EI = E * I # (I[1:] + I[:-1]) / 2
 
-if choice==0 or 1:
+if choice==0:
     video = 1 # 0
 save_flag = 0
 
@@ -106,11 +99,7 @@ if video == 1:
         factor1 = int(2000 / save_step_skip)
         name = 'trash'
     fps = 5 # 10
-    try:
-        os.mkdir(folder+'Videos/')
-    except:
-        pass
-    video_name = folder+'Videos/' + name + ".mov"
+    video_name = 'Videos/' + name + ".mov"
     FFMpegWriter = manimation.writers["ffmpeg"]
     metadata = dict(title="Movie Test", artist="Matplotlib", comment="Movie support!")
     writer = FFMpegWriter(fps=fps, metadata=metadata)

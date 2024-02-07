@@ -1,9 +1,8 @@
-"""
-Created on Tue Feb 6, 2024
-@author: tixianw2
-"""
 import numpy as np
-from sensory_feedback_control.utils import _aver, _aver_kernel
+from tqdm import tqdm
+from elastica import *
+from actuation_muscles import *
+from tools import _aver, _aver_kernel
 
 
 class SensoryFeedback:
@@ -36,9 +35,6 @@ class SensoryFeedback:
 
 	def LM_choice(self, array):
 		return np.where(array>=0), np.where(array<0)
-	
-	def TM_choice(self, array):
-		return np.where(abs(array)<=1.) # 0.1
 	
 	def feedback(self, time, system):
 		# mag_cos = system.director_collection.copy()[1,1,:]
@@ -75,7 +71,7 @@ class SensoryFeedback:
 		# # mag_ramp = 1 / (1 + np.exp(-500 * (self.s-self.s[idx_central]-0.01)))
 		self.ctrl_mag[:-1, :] *= factor * mag_feedback # * mag_ramp
 		self.ctrl_mag = np.clip(self.ctrl_mag, 0, 1)
-		# self.ctrl_mag[-1, :] *= factor * (1 - mag_feedback**2)
+		# self.ctrl_mag[-1, :] *= factor * mag_cos # * mag_ramp # * 0.1 #
 	
 	def sensory_feedback_law(self, time, system, target):
 		self.sensor(system, target)
