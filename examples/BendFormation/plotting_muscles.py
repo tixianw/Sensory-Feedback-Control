@@ -26,11 +26,8 @@ def isninf(a):
 
 folder = '../' # 'examples/'
 folder_name = folder+'Data/'
-choice = 1
-if choice==0:
-    file_name = 'bend_form'
-elif choice==1:
-    file_name = 'bend_prop'
+choice = 0
+file_name = 'bend_form'
 
 data = np.load(folder_name + file_name + '.npy', allow_pickle='TRUE').item()
 
