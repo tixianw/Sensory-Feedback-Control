@@ -40,6 +40,9 @@ Before installation, create a Python virtual environment to manage dependencies 
 2. Install Package: (two methods)
 
     ```properties
+    ## Need ffmpeg installed from Conda
+    conda install conda-forge::ffmpeg
+    
     ## Install directly from GitHub
     pip install git+https://github.com/tixianw/Sensory-Feedback-Control.git
 
