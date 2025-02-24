@@ -44,7 +44,7 @@ Before installation, create a Python virtual environment to manage dependencies 
     pip install git+https://github.com/tixianw/Sensory-Feedback-Control.git
 
     ## Or clone and install
-    git clone https://github.com/tixianw/Sensory-Feedback-Control.git
+    git clone https://github.com/tixianw/Sensory-Feedback-Control.git (download directly if cannot clone)
     cd Sensory-Feedback-Control
     pip install .
 
