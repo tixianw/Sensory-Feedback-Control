@@ -55,7 +55,7 @@ def data_save(env, controller):
 		'muscle': muscle,
 		'sensor': sensor,
 		}
-	np.save(folder+'Data/bend_form.npy', data)
+	np.save(folder+'Data/test1.npy', data)
 
 def get_activation(systems, time, controller=None, target=None):
 	if controller==None:
