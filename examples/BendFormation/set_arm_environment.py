@@ -186,7 +186,7 @@ class ArmEnvironment:
 		# self.flag_shooting = 1
 		if self.flag_shooting:
 			name = 'initial_data'
-			init_data = np.load('Data/'+name+'.npy', allow_pickle='TRUE').item()
+			init_data = np.load('../Data/'+name+'.npy', allow_pickle='TRUE').item()
 			init_pos = init_data['pos']
 		else:
 			# if direction[0]:
