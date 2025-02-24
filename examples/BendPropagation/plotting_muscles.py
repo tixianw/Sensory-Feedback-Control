@@ -26,7 +26,6 @@ def isninf(a):
 
 folder = '../' # 'examples/'
 folder_name = folder+'Data/'
-choice = 0
 file_name = 'bend_prop'
 
 data = np.load(folder_name + file_name + '.npy', allow_pickle='TRUE').item()
@@ -80,8 +79,7 @@ I = A**2 / (4*np.pi)
 EA = E * A
 EI = E * I # (I[1:] + I[:-1]) / 2
 
-if choice==0 or 1:
-    video = 1 # 0
+video = 1 # 0
 save_flag = 0
 
 if video == 1:
@@ -97,8 +95,7 @@ if video == 1:
     ax0 = fig.add_subplot(1, 1, 1)
     if save_flag:
         factor1 = 5 # min(int(1000 / save_step_skip), 1) # 5
-        if choice==0:
-            name = file_name # + '_bend_vel'
+        name = file_name
     else:
         factor1 = int(2000 / save_step_skip)
         name = 'trash'
