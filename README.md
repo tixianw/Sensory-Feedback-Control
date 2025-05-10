@@ -59,7 +59,7 @@ Before installation, create a Python virtual environment to manage dependencies 
 
 1. Clone and install development dependencies:
     ```properties
-    git clone [https://github.com/hanson-hschang/Signal-System.git](https://github.com/tixianw/Sensory-Feedback-Control.git)
+    git clone https://github.com/tixianw/Sensory-Feedback-Control.git
     cd Sensory-Feedback-Control
     pip install pip-tools
     ```
